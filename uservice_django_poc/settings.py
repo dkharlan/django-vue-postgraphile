@@ -37,7 +37,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = getenv_csv('ALLOWED_HOSTS', default=[])
 
-SESSION_COOKIE_DOMAIN = 'herp.derp'
+SESSION_COOKIE_DOMAIN = os.getenv('STATIC_RESOURCES_DOMAIN', None)
 
 LOGIN_REDIRECT_URL = '/'
 
