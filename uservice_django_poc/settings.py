@@ -66,7 +66,7 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_WHITELIST = [
-    'http://poc.experiments.openshift.dsc.umich.edu/'
+    'poc.experiments.openshift.dsc.umich.edu/'
 ]
 
 ROOT_URLCONF = 'uservice_django_poc.urls'
