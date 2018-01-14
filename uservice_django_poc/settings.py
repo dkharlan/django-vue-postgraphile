@@ -35,11 +35,11 @@ SECRET_KEY = '-89bkxwapxdt84$-p!2@&b85e%kuqwp*f(dlgple7ij5@l5=ai'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = getenv_csv('ALLOWED_HOSTS', default=[])
+ALLOWED_HOSTS = getenv_csv('ALLOWED_HOSTS')
 
 SESSION_COOKIE_DOMAIN = os.getenv('STATIC_RESOURCES_DOMAIN', None)
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = 'http://poc.experiments.openshift.dsc.umich.edu/'
 
 # Application definition
 
