@@ -1,7 +1,6 @@
-import json
-
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 
 def index(request):
@@ -10,4 +9,4 @@ def index(request):
 
 @login_required
 def who_am_i(request):
-    return json.dumps({'username': request.user.username})
+    return JsonResponse({'username': request.user.username})
