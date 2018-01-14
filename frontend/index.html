@@ -17,7 +17,7 @@
                 $.ajax({
                     url: 'http://api.poc.experiments.openshift.dsc.umich.edu/who_am_i/',
                     method: 'GET',
-                    xhrOptions: {
+                    xhrFields: {
                         withCredentials: true
                     }
                 }).done(function(info) {
