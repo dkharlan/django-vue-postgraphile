@@ -22,8 +22,8 @@
                     }
                 }).done(function(info) {
                     $('#name').text(info.username);
-                }).fail(function(one, two, three) {
-                    console.error(one, two, three);
+                }).fail(function(_, error) {
+                    console.error(error);
                 });
             });
         </script>
