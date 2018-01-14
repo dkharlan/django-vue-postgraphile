@@ -10,4 +10,4 @@ def index(request):
 
 @login_required
 def who_am_i(request):
-    return json.dumps({'username': request.session['user'].username})
+    return json.dumps({'username': request.user.username})
