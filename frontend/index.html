@@ -3,8 +3,25 @@
     <head>
         <meta charset="UTF-8">
         <title>Frontend</title>
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.js"
+                integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+                crossorigin="anonymous">
+        </script>
     </head>
     <body>
-        <p>Hello from the frontend</p>
+        <p>Hello, <span id="name">no one</span>!</p>
+
+        <script type="application/javascript">
+            $(document).ready(function() {
+                $.get('http://http://api.poc.experiments.openshift.dsc.umich.edu/who_am_i/')
+                    .done(function(info) {
+                        $('#name').text(info.username);
+                    })
+                    .fail(function(one, two, three) {
+                        console.error(one, two, three);
+                    });
+            });
+        </script>
     </body>
 </html>
