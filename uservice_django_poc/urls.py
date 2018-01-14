@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from foo.views import who_am_i
+from api.views import who_am_i
 
 urlpatterns = [
     url(r'^who_am_i/', who_am_i),
