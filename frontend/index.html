@@ -14,13 +14,17 @@
 
         <script type="application/javascript">
             $(document).ready(function() {
-                $.get('http://api.poc.experiments.openshift.dsc.umich.edu/who_am_i/')
-                    .done(function(info) {
-                        $('#name').text(info.username);
-                    })
-                    .fail(function(one, two, three) {
-                        console.error(one, two, three);
-                    });
+                $.ajax({
+                    url: 'http://api.poc.experiments.openshift.dsc.umich.edu/who_am_i/',
+                    method: 'GET',
+                    xhrOptions: {
+                        withCredentials: true
+                    }
+                }).done(function(info) {
+                    $('#name').text(info.username);
+                }).fail(function(one, two, three) {
+                    console.error(one, two, three);
+                });
             });
         </script>
     </body>
