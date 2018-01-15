@@ -86,12 +86,19 @@
 <script>
 export default {
   name: 'HelloWorld',
-  data () {
+  mounted() {
+    const self = this;
+    fetch('http://localhost:8000/who_am_i', {credentials: 'include'}).then((data) => {
+      self.name = data.username;
+    });
+  },
+  data() {
     return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+      msg: 'Welcome to Your Vue.js App',
+      name: null
+    };
   }
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

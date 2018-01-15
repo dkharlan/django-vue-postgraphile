@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+from django.core.exceptions import ImproperlyConfigured
+
 
 def getenv_csv(var, default=''):
     val = os.getenv(var, default)
@@ -20,6 +22,18 @@ def getenv_csv(var, default=''):
         return []
 
     return [x.strip(' ') for x in val.split(',')]
+
+
+def require_env(variable):
+    value = os.getenv(variable, None)
+    if value is None:
+        raise ImproperlyConfigured('Required environment variable "%s" is not set.' % variable)
+    return value
+
+
+def get_env_bool(variable):
+    value = os.getenv(variable)
+    return value and value.lower() in ('true', 'yes', 1)
 
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -33,13 +47,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-89bkxwapxdt84$-p!2@&b85e%kuqwp*f(dlgple7ij5@l5=ai'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = get_env_bool('DEBUG_MODE')
 
 ALLOWED_HOSTS = getenv_csv('ALLOWED_HOSTS')
 
-SESSION_COOKIE_DOMAIN = os.getenv('STATIC_RESOURCES_DOMAIN', None)
+FRONTEND_RESOURCES_DOMAIN = require_env('FRONTEND_RESOURCES_DOMAIN')
+SESSION_COOKIE_DOMAIN = FRONTEND_RESOURCES_DOMAIN
 
-LOGIN_REDIRECT_URL = 'http://poc.experiments.openshift.dsc.umich.edu/'
+LOGIN_REDIRECT_URL = 'http://%s/' % FRONTEND_RESOURCES_DOMAIN
 
 # Application definition
 
@@ -67,7 +82,7 @@ MIDDLEWARE = [
 
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
-    'poc.experiments.openshift.dsc.umich.edu'
+  FRONTEND_RESOURCES_DOMAIN
 ]
 
 ROOT_URLCONF = 'uservice_django_poc.urls'
