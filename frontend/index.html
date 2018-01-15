@@ -1,29 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Frontend</title>
-        <script
-                src="https://code.jquery.com/jquery-3.2.1.js"
-                integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
-                crossorigin="anonymous">
-        </script>
-    </head>
-    <body>
-        <p>Hello, <span id="name">no one</span>!</p>
-
-        <script type="application/javascript">
-            $(document).ready(function() {
-                $.ajax({
-                    url: 'http://api.poc.experiments.openshift.dsc.umich.edu/who_am_i/',
-                    method: 'GET',
-                    xhrFields: {
-                        withCredentials: true
-                    }
-                }).done(function(info) {
-                    $('#name').text(info.username);
-                });
-            });
-        </script>
-    </body>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>uservice-django-poc-frontend</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
 </html>
