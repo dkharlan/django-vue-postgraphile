@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    app: uservice-django-poc
+  name: uservice-django-poc-frontend
+  namespace: experiments
+spec:
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: uservice-django-poc-frontend:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    git:
+      uri: https://github.com/dkharlan/uservice_django_poc.git
+    type: Git
+  strategy:
+    dockerStrategy:
+      dockerfilePath: frontend.Dockerfile
+      from:
+        kind: ImageStreamTag
+        name: httpd:2.4-alpine
+        namespace: experiments
+    type: Source
+  triggers:
+  - github:
+      secret: <...redacted...>
+    type: GitHub
+  - generic:
+      secret: <...redacted...>
+    type: Generic
+  - type: ConfigChange
+  - imageChange:
+    type: ImageChange
+

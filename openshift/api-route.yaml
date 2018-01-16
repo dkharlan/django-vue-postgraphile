@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: uservice-django-poc-api
+  namespace: experiments
+spec:
+  host: api.poc.experiments.openshift.dsc.umich.edu
+  port:
+    targetPort: 8000-tcp
+  to:
+    kind: Service
+    name: uservice-django-poc-api
+    weight: 100
+  wildcardPolicy: None
+
