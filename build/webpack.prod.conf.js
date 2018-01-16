@@ -31,8 +31,10 @@ const webpackConfig = merge(baseWebpackConfig, {
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
+    // TODO see if we can move this to base and use environment variables
     new webpack.DefinePlugin({
-      'process.env': env
+      'process.env': env,
+      '__API_URL__': '\'http://api.poc.experiments.openshift.dsc.umich.edu\''
     }),
     new UglifyJsPlugin({
       uglifyOptions: {

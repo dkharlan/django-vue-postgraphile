@@ -87,7 +87,7 @@
 export default {
   name: 'HelloWorld',
   mounted() {
-    fetch('http://localhost:8000/who_am_i', {credentials: 'include'}).then((response) => {
+    fetch(__API_URL__ + '/who_am_i', {credentials: 'include'}).then((response) => {
       response.json().then((data) => {
         this.name = data.username;
       });
