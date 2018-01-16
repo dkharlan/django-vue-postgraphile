@@ -1,7 +1,13 @@
 FROM httpd:alpine
 
-RUN apk add --update nodejs nodejs-npm
-RUN npm install
+# TODO can we remove npm stuff afterwards, or should this be done in CI?
 
+RUN apk add --update nodejs nodejs-npm
+
+RUN mkdir -p /tmp/build
+COPY . /tmp/build
+WORKDIR /tmp/build
+
+RUN npm install
 RUN npm run build
-COPY ./dist/ /usr/local/apache2/htdocs
+RUN cp -Rv /tmp/build/dist/* /usr/local/apache2/htdocs/
