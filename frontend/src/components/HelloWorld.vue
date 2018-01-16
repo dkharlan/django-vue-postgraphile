@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>{{ msg }}<span v-if="name">, {{ name }}!</span></h1>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -87,9 +87,10 @@
 export default {
   name: 'HelloWorld',
   mounted() {
-    const self = this;
-    fetch('http://localhost:8000/who_am_i', {credentials: 'include'}).then((data) => {
-      self.name = data.username;
+    fetch('http://localhost:8000/who_am_i', {credentials: 'include'}).then((response) => {
+      response.json().then((data) => {
+        this.name = data.username;
+      });
     });
   },
   data() {
