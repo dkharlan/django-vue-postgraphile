@@ -71,37 +71,9 @@ See also:
 - [VueJS Webpack Guide](http://vuejs-templates.github.io/webpack/)
 - [vue-loader Documentation](http://vuejs.github.io/vue-loader).
 
-### Build Setup
-
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
-
-For a detailed explanation on how things work, check out the 
-
 ## Still TBD
 
 The following things still need some work:
-- Move `test/` to `frontend/` and test frontend tests
 - Test CSRF
 - Test in iframes (also multiple browsers -- Safari in particular)
 - Modify `CORS_ORIGIN_WHITELIST` settings to allow env var csv like `ALLOWED_HOSTS`, but required
