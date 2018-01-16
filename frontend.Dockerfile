@@ -1,3 +1,7 @@
 FROM httpd:alpine
 
-COPY ./frontend/ /usr/local/apache2/htdocs
+RUN apk add --update nodejs nodejs-npm
+RUN npm install
+
+RUN npm run build
+COPY ./dist/ /usr/local/apache2/htdocs
