@@ -11,3 +11,6 @@ WORKDIR /tmp/build
 RUN npm install
 RUN npm run build
 RUN cp -Rv /tmp/build/dist/* /usr/local/apache2/htdocs/
+
+WORKDIR $HTTPD_PREFIX
+RUN rm -rf /tmp/build
