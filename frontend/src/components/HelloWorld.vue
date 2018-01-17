@@ -40,16 +40,8 @@
 </template>
 
 <script>
-const cookies = require('js-cookie');
 export default {
   name: 'HelloWorld',
-  mounted() {
-    fetch(__API_URL__ + '/who_am_i', {credentials: 'include'}).then((response) => {
-      response.json().then((data) => {
-        this.name = data.username;
-      });
-    });
-  },
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
@@ -57,17 +49,17 @@ export default {
     };
   },
   methods: {
-    sendMessage() {
-      fetch(__API_URL__ + '/tell_me_something/', {
-        credentials: 'include',
-        method: 'post',
-        body: JSON.stringify({message: 'Hello from the frontend!'}),
-        headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': cookies.get('csrftoken')
-        }
+    retrieveName() {
+      this.$api.get('/who_am_i/').then((response) => {
+        this.name = response.data.username;
       });
+    },
+    sendMessage() {
+      this.$api.post('/tell_me_something/', {message: 'Hello from the frontend!'});
     }
+  },
+  mounted() {
+    this.retrieveName();
   }
 };
 </script>

@@ -76,7 +76,5 @@ See also:
 ## Still TBD
 
 The following things still need some work:
-- Replace `fetch` on the frontend with [Axios](https://github.com/axios/axios); think about a
-[mixin](https://vuejs.org/v2/guide/mixins.html)
 - Test in iframes (also multiple browsers -- Safari in particular)
 - Modify `CORS_ORIGIN_WHITELIST` settings to allow env var csv like `ALLOWED_HOSTS`, but required
