@@ -48,11 +48,9 @@ SECRET_KEY = '-89bkxwapxdt84$-p!2@&b85e%kuqwp*f(dlgple7ij5@l5=ai'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = get_env_bool('DEBUG_MODE')
-
 ALLOWED_HOSTS = getenv_csv('ALLOWED_HOSTS')
-
 SESSION_COOKIE_DOMAIN = require_env('SESSION_COOKIE_DOMAIN')
-
+CSRF_COOKIE_DOMAIN = require_env('CSRF_COOKIE_DOMAIN')
 LOGIN_REDIRECT_URL = require_env('LOGIN_REDIRECT_URL')
 
 # Application definition

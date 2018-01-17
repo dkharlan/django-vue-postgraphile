@@ -25,6 +25,8 @@ The API requires the following environment variables:
 [ALLOWED_HOSTS](https://docs.djangoproject.com/en/1.11/ref/settings/#allowed-hosts)
 - `SESSION_COOKIE_DOMAIN` for
 [SESSION_COOKIE_DOMAIN](https://docs.djangoproject.com/en/1.11/ref/settings/#session-cookie-domain)
+- `CSRF_COOKIE_DOMAIN` for
+[CSRF_COOKIE_DOMAIN](https://docs.djangoproject.com/en/1.11/ref/settings/#csrf-cookie-domain)
 - `LOGIN_REDIRECT_URL` for
 [LOGIN_REDIRECT_URL](https://docs.djangoproject.com/en/1.11/ref/settings/#login-redirect-url)
 - `FRONTEND_RESOURCES_DOMAIN` for [django-cors-headers](https://github.com/ottoyiu/django-cors-headers)'s
@@ -74,6 +76,7 @@ See also:
 ## Still TBD
 
 The following things still need some work:
-- Test CSRF
+- Replace `fetch` on the frontend with [Axios](https://github.com/axios/axios); think about a
+[mixin](https://vuejs.org/v2/guide/mixins.html)
 - Test in iframes (also multiple browsers -- Safari in particular)
 - Modify `CORS_ORIGIN_WHITELIST` settings to allow env var csv like `ALLOWED_HOSTS`, but required
