@@ -40,6 +40,7 @@
 </template>
 
 <script>
+const cookies = require('js-cookie');
 export default {
   name: 'HelloWorld',
   mounted() {
@@ -60,7 +61,11 @@ export default {
       fetch(__API_URL__ + '/tell_me_something/', {
         credentials: 'include',
         method: 'post',
-        body: JSON.stringify({message: 'Hello from the frontend!'})
+        body: JSON.stringify({message: 'Hello from the frontend!'}),
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': cookies.get('csrftoken')
+        }
       });
     }
   }
