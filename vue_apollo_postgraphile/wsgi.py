@@ -1,5 +1,5 @@
 """
-WSGI config for uservice_django_poc project.
+WSGI config for vue_apollo_postgraphile project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "uservice_django_poc.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "vue_apollo_postgraphile.settings")
 
 application = get_wsgi_application()

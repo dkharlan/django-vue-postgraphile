@@ -8,4 +8,4 @@ set -x
 gunicorn \
     --workers="$GUNICORN_WORKERS" \
     --bind=0.0.0.0:"$GUNICORN_PORT" \
-    uservice_django_poc.wsgi:application
+    vue_apollo_postgraphile.wsgi:application
