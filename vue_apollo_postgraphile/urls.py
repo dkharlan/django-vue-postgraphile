@@ -16,11 +16,10 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
-import api.views as v
+import api.endpoints as api
 
 urlpatterns = [
-    url(r'^who_am_i/', v.who_am_i),
-    url(r'^tell_me_something/', v.tell_me_something),
+    url(r'^todo/(?P<item_id>([0-9]+|all))', api.todo_items),
     url(r'^accounts/', include('django.contrib.auth.urls')),
     url(r'^admin/', admin.site.urls),
 ]
