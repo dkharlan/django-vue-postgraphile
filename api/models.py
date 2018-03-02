@@ -1,3 +1,8 @@
-from django.db import models
+from django.db.models import Model, TextField
 
-# Create your models here.
+
+class TodoItem(Model):
+    text = TextField()
+
+    def to_dict(self):
+        return {'id': self.id, 'text': self.text}
