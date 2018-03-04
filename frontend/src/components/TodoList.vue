@@ -1,6 +1,9 @@
 <template>
     <ul>
-        <todo-item v-for="item of items" :key="item.id" :text="item.text"/>
+        <todo-item
+            v-for="item of items"
+            :key="item.id"
+            :text="item.text" />
     </ul>
 </template>
 
@@ -9,8 +12,19 @@ import TodoItem from '@/components/TodoItem';
 
 export default {
   name: 'todo-list',
-  props: ['items'],
-  components: {TodoItem}
+  components: {TodoItem},
+  data() {
+    return {
+      items: []
+    };
+  },
+  mounted() {
+    fetch(__API_URL__ + '/todo/all')
+      .then(response => response.json())
+      .then(data => {
+        this.items = data;
+      });
+  }
 };
 </script>
 
