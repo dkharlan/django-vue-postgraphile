@@ -1,7 +1,7 @@
 <template>
     <ul>
         <todo-item
-            v-for="item of items"
+            v-for="item of sortedItems"
             :key="item.id"
             :text="item.text" />
     </ul>
@@ -17,6 +17,13 @@ export default {
     return {
       items: []
     };
+  },
+  computed: {
+    sortedItems() {
+      return this.items
+        .concat()
+        .sort((a, b) => b.id - a.id);
+    }
   },
   mounted() {
     fetch(__API_URL__ + '/todo/all')
