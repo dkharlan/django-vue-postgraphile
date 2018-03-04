@@ -11,8 +11,15 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import json
 
 from django.core.exceptions import ImproperlyConfigured
+
+
+def load_json_file(filename):
+    with open(filename) as json_file:
+        data = json_file.read()
+    return json.loads(data)
 
 
 def getenv_csv(var, default=''):
@@ -106,14 +113,10 @@ WSGI_APPLICATION = 'vue_apollo_postgraphile.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+API_DB_CONFIG_FILE = os.environ['API_DB_CONFIG_FILE']
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': 'localhost',
-        'NAME': 'testdb',
-        'USER': 'testuser',
-        'PASSWORD': 'testpass'
-    }
+    'default': load_json_file(API_DB_CONFIG_FILE)
 }
 
 

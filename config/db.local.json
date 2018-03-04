@@ -1,0 +1,7 @@
+{
+  "ENGINE": "django.db.backends.postgresql",
+  "HOST": "localhost",
+  "NAME": "testdb",
+  "USER": "testuser",
+  "PASSWORD": "testpass"
+}
