@@ -44,8 +44,14 @@ on schema changes; this requires superuser privileges!):
 
 ```bash
 $ npm install -g postgraphile
-$ postgraphile -c "postgres://<user>:<pass>@<host>/testdb" --watch
+$ postgraphile -c "postgres://<user>:<pass>@<host>/testdb" --cors --watch
 ```
+
+N.B.:
+- The `--watch` flag requires that your database user have
+superuser privileges.
+- Neither `--watch` nor `--cors` should be used in
+production, obviously.
 
 Try the following to see if everything's working:
 
