@@ -4,9 +4,9 @@
 
 <script>
 export default {
-  name: "todo-item",
+  name: 'todo-item',
   props: ['text']
-}
+};
 </script>
 
 <style scoped>
