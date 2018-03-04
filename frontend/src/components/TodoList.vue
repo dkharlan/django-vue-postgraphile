@@ -1,13 +1,14 @@
 <template>
     <ul>
         <todo-item
-            v-for="item of sortedItems"
+            v-for="item of items"
             :key="item.id"
             :text="item.text" />
     </ul>
 </template>
 
 <script>
+import gql from 'graphql-tag';
 import TodoItem from '@/components/TodoItem';
 
 export default {
@@ -18,19 +19,20 @@ export default {
       items: []
     };
   },
-  computed: {
-    sortedItems() {
-      return this.items
-        .concat()
-        .sort((a, b) => b.id - a.id);
+  apollo: {
+    items: {
+      query: gql`query {
+        allApiTodoitems(orderBy: PRIMARY_KEY_DESC) {
+          nodes {
+            id
+            text
+          }
+        }
+      }`,
+      update(data) {
+        return data.allApiTodoitems.nodes;
+      }
     }
-  },
-  mounted() {
-    fetch(__API_URL__ + '/todo/all')
-      .then(response => response.json())
-      .then(data => {
-        this.items = data;
-      });
   }
 };
 </script>

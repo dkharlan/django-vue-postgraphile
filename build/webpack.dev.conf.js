@@ -47,7 +47,8 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   plugins: [
     new webpack.DefinePlugin({
       'process.env': require('../config/dev.env'),
-      '__API_URL__': '\'http://localhost:8000\''
+      '__API_URL__': '\'http://localhost:8000\'',
+      '__GRAPHQL_ENDPOINT__': '\'http://localhost:5000/graphql\''
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
